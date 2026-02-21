@@ -1,8 +1,8 @@
 ---
-title: "A Ciência da Hipertrofia: Codando a Calculadora de Macros Perfeita"
+title: "A Ciência da Hipertrofia: Codando a Calculadora de TMB e GET Perfeita"
 published: 2026-02-20
 updated: 2026-02-20
-description: "Chega de chute. Vamos usar as equações mais precisas da ciência do esporte (Mifflin, Katch-McArdle e Cunningham) para calcular seus macros com precisão de engenheiro."
+description: "Chega de chute. Vamos usar as equações mais precisas da ciência do esporte (Mifflin, Katch-McArdle e Cunningham) para calcular seu metabolismo basal e gasto calórico com precisão de engenheiro."
 tags: ["engenharia", "fitness", "react", "ciência", "algoritmos"]
 image: "../images/cat.png"
 category: "Tech & Treino"
@@ -13,14 +13,14 @@ fmContentType: posts
 
 import ScientificMacroCalc from '../../../components/ScientificMacroCalc.jsx'
 
-# A Ciência da Hipertrofia: Codando a Calculadora de Macros Perfeita
+# A Ciência da Hipertrofia: Codando a Calculadora de TMB e GET Perfeita
 ### *Because the voices in my head demand optimal metabolic tracking*
 
 Na engenharia de software, temos um ditado antigo: *Garbage In, Garbage Out* (GIGO). Se os dados de entrada forem ruins, a saída será lixo, não importa quão refinado seja o seu algoritmo.
 
-Surpreendentemente, a maioria das pessoas trata o cálculo de calorias para dieta ignorando esse princípio. Usam fórmulas criadas na época da Primeira Guerra Mundial ou ignoram a composição corporal, tratando 100kg de puro músculo da mesma forma que 100kg de puro sedentarismo.
+Surpreendentemente, a maioria das pessoas trata o cálculo de calorias para dieta ignorando esse princípio. Usam fórmulas criadas na época da Primeira Guerra Mundial ou ignoram a composição corporal, tratando 100 kg de puro músculo da mesma forma que 100 kg de puro sedentarismo.
 
-Para construir a "calculadora perfeita", precisamos injetar ciência de verdade no nosso *backend*. Vamos escalar a precisão do nosso algoritmo em três níveis.
+Antes de sequer pensar em dividir os *macros* (proteínas, carboidratos e gorduras), precisamos injetar ciência de verdade no nosso *backend* para descobrir de onde os números saem. Vamos escalar a precisão do nosso algoritmo de gasto energético em três níveis.
 
 ## O Backend Matemático: Definindo a Taxa Metabólica Basal (TMB)
 
@@ -60,13 +60,15 @@ $$TMB=500+(22\times{LBM})$$
 Em vez de multiplicar a TMB, nós calculamos o **Gasto Energético Total (GET)** somando suas partes móveis:
 $$GET=TMB+NEAT+TEA+TEF$$
 
+
+
 * **NEAT** (Termogênese Não-Associada ao Exercício): Calorias gastas andando pela casa ou trabalhando.
 * **TEA** (Termogênese do Exercício): O gasto real do seu treino pesado ou cardio.
 * **TEF** (Efeito Térmico dos Alimentos): A energia que o corpo gasta para quebrar a própria comida (dietas hiperproteicas gastam até **20%** a mais de calorias só na digestão).
 
 ## A Interface Interativa: Teste o Algoritmo
 
-Chega de teoria. Desenvolvi este componente MDX para aceitar todos esses inputs dinamicamente. Observe como o resultado final muda drasticamente quando você passa do Nível 1 para o Nível 3 e injeta dados hiperespecíficos.
+Chega de teoria. Desenvolvi este componente MDX para aceitar todos esses inputs dinamicamente. Observe como o resultado final da sua TMB e do seu GET muda drasticamente quando você passa do Nível 1 para o Nível 3 e injeta dados hiperespecíficos.
 
 *Alterne as abas para explorar a evolução do cálculo matemático na prática.*
 
