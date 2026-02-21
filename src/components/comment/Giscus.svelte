@@ -14,7 +14,7 @@ if (!commentConfig || !commentConfig.giscus) {
 	throw new Error("Giscus comments are not configured");
 }
 const giscus = commentConfig.giscus;
-$: giscusLang = lang || giscus.lang || "en";
+$: giscusLang = (lang && lang.toLowerCase().startsWith('pt')) ? 'pt' : (lang || giscus.lang || "en");
 $: giscusMapping = mapping || giscus.mapping || "pathname";
 $: giscusTerm = term !== undefined ? term : (giscus.term || "");
 

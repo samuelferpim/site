@@ -39,7 +39,7 @@ const displayCategories =
     <div class="flex items-center">
         <div class="meta-icon"
         >
-            <Icon name="material-symbols:calendar-today-outline-rounded" class="text-xl"></Icon>
+            <Icon name="pixelarticons:calendar" class="text-xl"></Icon>
         </div>
         <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(published)}</span>
     </div>
@@ -61,7 +61,7 @@ const displayCategories =
     <div class="flex items-center">
         <div class="meta-icon"
         >
-            <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
+            <Icon name="pixelarticons:book" class="text-xl"></Icon>
         </div>
         <div class="flex flex-row flex-wrap items-center">
             {displayCategories.map((cat, i) => (
@@ -81,7 +81,7 @@ const displayCategories =
     <div class:list={["items-center", {"flex": !hideTagsForMobile, "hidden md:flex": hideTagsForMobile}]}>
         <div class="meta-icon"
         >
-            <Icon name="material-symbols:tag-rounded" class="text-xl"></Icon>
+            <Icon name="pixelarticons:label" class="text-xl"></Icon>
         </div>
         <div class="flex flex-row flex-wrap items-center">
             {(tags && tags.length > 0) && tags.map((tag, i) => (

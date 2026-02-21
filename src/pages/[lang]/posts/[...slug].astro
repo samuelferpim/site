@@ -138,7 +138,7 @@ const postLang = getPostLang(entry);
         ]}>
             {postLang !== lang && (
                 <div class="w-full rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 px-4 py-3 mb-6 flex items-center gap-2">
-                    <Icon name="material-symbols:warning-rounded" class="text-xl shrink-0" />
+                    <Icon name="pixelarticons:alert" class="text-xl shrink-0" />
                     <span>{getTranslation(lang)[I18nKey.unsupportedLang].replace('%s', getTranslation(lang)[I18nKey.langName])}</span>
                 </div>
             )}
@@ -147,7 +147,7 @@ const postLang = getPostLang(entry);
                 {updatedDate && (
                     <div class="flex flex-row items-center">
                         <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                            <Icon name="material-symbols:update-rounded"></Icon>
+                            <Icon name="pixelarticons:refresh"></Icon>
                         </div>
                         <div class="text-sm">
                             {updatedDate} {i18n(I18nKey.updatedSuffix, lang)}
@@ -156,13 +156,13 @@ const postLang = getPostLang(entry);
                 )}
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                        <Icon name="material-symbols:notes-rounded"></Icon>
+                        <Icon name="pixelarticons:file-alt"></Icon>
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount, lang)}</div>
                 </div>
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
-                        <Icon name="material-symbols:schedule-outline-rounded"></Icon>
+                        <Icon name="pixelarticons:clock"></Icon>
                     </div>
                     <div class="text-sm">
                         {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount, lang)}
@@ -215,7 +215,7 @@ const postLang = getPostLang(entry);
         <a href={prevNext?.nextSlug ? getPostUrlBySlug(prevNext.nextSlug, lang) : "#"}
            class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !prevNext?.nextSlug}]}>
             {prevNext?.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
-                <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
+                <Icon name="pixelarticons:arrow-left" class="text-[2rem] text-[var(--primary)]" />
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
                     {prevNext.nextTitle}
                 </div>
@@ -228,7 +228,7 @@ const postLang = getPostLang(entry);
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
                     {prevNext.prevTitle}
                 </div>
-                <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
+                <Icon name="pixelarticons:arrow-right" class="text-[2rem] text-[var(--primary)]" />
             </div>}
         </a>
     </div>

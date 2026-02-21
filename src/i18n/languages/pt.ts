@@ -38,7 +38,7 @@ export const ptBR: Translation = {
 	[Key.unsupportedLang]: "Esta página ainda não foi traduzida para %s.",
 	[Key.langName]: "Português (Brasil)",
 	[Key.profile]: "Perfil",
-	[Key.portfolio]: "Portfólio",
+	[Key.portfolio]: "Portf\u00f3lio",
 	[Key.notFoundTitle]: "Página não encontrada",
 	[Key.backToHome]: "Voltar para a página inicial",
 	[Key.updatedSuffix]: "(Atualizado)",
