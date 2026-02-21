@@ -31,6 +31,8 @@ import { createSitemapSerialize } from "./src/utils/sitemap-utils.ts";
 
 import react from "@astrojs/react";
 
+import partytown from "@astrojs/partytown";
+
 const site = "https://samuelferpim.com";
 const contentDir = fileURLToPath(
     new URL("./src/content/posts", import.meta.url),
@@ -43,7 +45,7 @@ export default defineConfig({
     trailingSlash: "always",
     integrations: [tailwind({
         nesting: true,
-		}), swup({
+        }), swup({
         theme: false,
         animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
         // the default value `transition-` cause transition delay
@@ -56,14 +58,14 @@ export default defineConfig({
         updateHead: true,
         updateBodyClass: false,
         globalInstance: true,
-		}), icon({
+        }), icon({
         include: {
             "preprocess: vitePreprocess(),": ["*"],
             "fa6-brands": ["*"],
             "fa6-regular": ["*"],
             "fa6-solid": ["*"],
         },
-		}), expressiveCode({
+        }), expressiveCode({
         themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
         plugins: [
             pluginCollapsibleSections(),
@@ -107,7 +109,7 @@ export default defineConfig({
         frames: {
             showCopyToClipboardButton: false,
         },
-		}), mdx(), svelte(), sitemap({
+        }), mdx(), svelte(), sitemap({
         i18n: {
             defaultLocale: DEFAULT_LOCALE,
             locales: Object.fromEntries(
@@ -115,7 +117,11 @@ export default defineConfig({
             ),
         },
         serialize: createSitemapSerialize(site, contentDir),
-		}), react()],
+        }), react(), partytown({
+            config: {
+                forward: ["dataLayer.push"],
+            },
+        })],
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
         locales: [...SUPPORTED_LOCALES],
