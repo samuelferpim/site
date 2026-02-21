@@ -1,4 +1,6 @@
+import { DEFAULT_LOCALE } from "./i18n/constants";
 import type {
+	CommentConfig,
 	ExpressiveCodeConfig,
 	LicenseConfig,
 	NavBarConfig,
@@ -7,10 +9,31 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
+export const expressiveCodeConfig: ExpressiveCodeConfig = {
+	theme: "github-dark",
+};
+
+export const commentConfig: CommentConfig = {
+	giscus: {
+		repo: "samuelferpim/site", // TODO: habilitar Discussions no seu repo
+		repoId: "", // TODO: pegar em https://giscus.app
+		category: "General",
+		categoryId: "", // TODO: pegar em https://giscus.app
+		mapping: "pathname",
+		strict: "0",
+		reactionsEnabled: "1",
+		emitMetadata: "0",
+		inputPosition: "bottom",
+		theme: "preferred_color_scheme",
+		lang: DEFAULT_LOCALE,
+		loading: "lazy",
+	},
+};
+
 export const siteConfig: SiteConfig = {
 	title: "Samuel",
 	subtitle: "Just the voices in my head",
-	lang: "en",
+	lang: DEFAULT_LOCALE as SiteConfig["lang"],
 	themeColor: {
 		hue: 225,
 		fixed: false,
@@ -19,6 +42,7 @@ export const siteConfig: SiteConfig = {
 		enable: true,
 		src: "assets/images/banner.png",
 		position: "center",
+		quality: "mid",
 		credit: {
 			enable: false,
 			text: "",
@@ -37,6 +61,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.About,
+		LinkPreset.Portfolio,
 		{
 			name: "GitHub",
 			url: "https://github.com/samuelferpim",
@@ -47,6 +72,7 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.jpg",
+	avatarQuality: "high",
 	name: "Samuel",
 	bio: "???",
 	links: [
@@ -56,20 +82,20 @@ export const profileConfig: ProfileConfig = {
 			url: "https://instagram.com/samuelferpim",
 		},
 		{
-      name: "LinkedIn",
-      icon: "fa6-brands:linkedin", 
-      url: "https://www.linkedin.com/in/samuelferpim", 
-    },
-    {
-      name: "GitHub",
-      icon: "fa6-brands:github",
-      url: "https://github.com/samuelferpim", 
-    },
-    {
-      name: "E-mail",
-      icon: "fa6-solid:envelope",
-      url: "mailto:samuelferpim@gmail.com", 
-    },
+			name: "LinkedIn",
+			icon: "fa6-brands:linkedin",
+			url: "https://www.linkedin.com/in/samuelferpim",
+		},
+		{
+			name: "GitHub",
+			icon: "fa6-brands:github",
+			url: "https://github.com/samuelferpim",
+		},
+		{
+			name: "E-mail",
+			icon: "fa6-solid:envelope",
+			url: "mailto:samuelferpim@gmail.com",
+		},
 	],
 };
 
@@ -77,8 +103,4 @@ export const licenseConfig: LicenseConfig = {
 	enable: true,
 	name: "CC BY-NC-SA 4.0",
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-};
-
-export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	theme: "github-dark",
 };

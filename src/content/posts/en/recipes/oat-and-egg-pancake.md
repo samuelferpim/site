@@ -2,7 +2,7 @@
 title: "Oat and Egg Pancakes: Your New Breakfast Best Friend"
 published: 2026-02-20
 description: "Tired of scrambled eggs and oatmeal porridge? These oat and egg pancakes fix your mornings with 27g of protein."
-image: "./images/oat-and-egg-pancakes-cover.jpg"
+image: "../../images/oat-and-egg-pancakes-cover.jpg"
 tags: ["tips", "food", "recipes"]
 category: "Recipes"
 draft: false

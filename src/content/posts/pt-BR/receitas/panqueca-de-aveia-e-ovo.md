@@ -1,8 +1,8 @@
 ---
-title: "Panqueca de Aveia e ovos: Sua Nova Melhor Amiga no Café da Manhã"
+title: "Panqueca de Aveia e Ovos: Sua Nova Melhor Amiga no Café da Manhã"
 published: 2026-02-20
 description: "Enjoou de ovo mexido e mingau de aveia? Essa panqueca de aveia e ovos vai resolver sua vida com 27g de proteína."
-image: "./images/oat-and-egg-pancakes-cover.jpg"
+image: "../../images/oat-and-egg-pancakes-cover.jpg"
 tags: ["dicas", "alimentação", "receitas"]
 category: "Receitas"
 draft: false

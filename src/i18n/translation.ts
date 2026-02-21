@@ -5,6 +5,7 @@ import { es } from "./languages/es";
 import { id } from "./languages/id";
 import { ja } from "./languages/ja";
 import { ko } from "./languages/ko";
+import { ptBR } from "./languages/pt";
 import { th } from "./languages/th";
 import { tr } from "./languages/tr";
 import { vi } from "./languages/vi";
@@ -15,7 +16,13 @@ export type Translation = {
 	[K in I18nKey]: string;
 };
 
-const defaultTranslation = en;
+import {
+	DEFAULT_LOCALE,
+	SUPPORTED_LOCALES,
+	type SupportedLocale,
+} from "./constants";
+
+export { DEFAULT_LOCALE, SUPPORTED_LOCALES, type SupportedLocale };
 
 const map: { [key: string]: Translation } = {
 	es: es,
@@ -36,13 +43,23 @@ const map: { [key: string]: Translation } = {
 	id: id,
 	tr: tr,
 	tr_tr: tr,
+	pt_br: 	ptBR,
 };
+
+const defaultTranslation = map[DEFAULT_LOCALE.toLowerCase()];
 
 export function getTranslation(lang: string): Translation {
 	return map[lang.toLowerCase()] || defaultTranslation;
 }
 
-export function i18n(key: I18nKey): string {
-	const lang = siteConfig.lang || "en";
-	return getTranslation(lang)[key];
+export function i18n(key: I18nKey, lang?: string): string {
+	const locale = lang || siteConfig.lang || DEFAULT_LOCALE;
+	return getTranslation(locale)[key];
+}
+
+export function getKeyToLanguage(lang: string): string {
+	const normalized = lang.replace("_", "-").toLowerCase();
+	const [language, region] = normalized.split("-");
+	if (!region) return language;
+	return `${language}-${region.toUpperCase()}`;
 }

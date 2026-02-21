@@ -1,67 +1,158 @@
 {
-  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
-  "frontMatter.framework.id": "astro",
-  "frontMatter.preview.host": "http://localhost:4321",
-  "frontMatter.content.publicFolder": "public",
-  "frontMatter.content.pageFolders": [
-    {
-      "title": "posts",
-      "path": "[[workspace]]/src/content/posts"
-    }
-  ],
-  "frontMatter.taxonomy.contentTypes": [
-    {
-      "name": "default",
-      "pageBundle": true,
-      "previewPath": "'blog'",
-      "filePrefix": null,
-      "clearEmpty": true,
-      "fields": [
-        {
-          "title": "title",
-          "name": "title",
-          "type": "string",
-          "single": true
-        },
-        {
-          "title": "description",
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "title": "published",
-          "name": "published",
-          "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
-        },
-        {
-          "title": "preview",
-          "name": "image",
-          "type": "image",
-          "isPreviewImage": true
-        },
-        {
-          "title": "tags",
-          "name": "tags",
-          "type": "list"
-        },
-        {
-          "title": "category",
-          "name": "category",
-          "type": "string"
-        },
-        {
-          "title": "draft",
-          "name": "draft",
-          "type": "boolean"
-        },
-        {
-          "title": "language",
-          "name": "language",
-          "type": "string"
-        }
-      ]
-    }
-  ]
+	"$schema": "https://frontmatter.codes/frontmatter.schema.json",
+	"frontMatter.framework.id": "astro",
+	"frontMatter.preview.host": "http://localhost:4321",
+	"frontMatter.content.publicFolder": {
+		"path": "[[workspace]]/src/assets",
+		"relative": true
+	},
+	"frontMatter.preview.trailingSlash": true,
+	"frontMatter.content.pageFolders": [
+		{
+			"title": "posts",
+			"path": "[[workspace]]/src/content/posts",
+			"previewPath": "posts/{{pathToken.relPath}}"
+		},
+		{
+			"title": "portfolio",
+			"path": "[[workspace]]/src/content/portfolio",
+			"previewPath": "portfolio/{{pathToken.relPath}}"
+		},
+		{
+			"title": "spec",
+			"path": "[[workspace]]/src/content/spec",
+			"previewPath": "profile/{{pathToken.relPath}}"
+		}
+	],
+	"frontMatter.taxonomy.alignFilename": true,
+	"frontMatter.taxonomy.contentTypes": [
+		{
+			"name": "posts",
+			"pageBundle": false,
+			"previewPath": "posts/{{pathToken.relPath}}",
+			"filePrefix": null,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"title": "Title",
+					"name": "title",
+					"type": "string",
+					"single": true
+				},
+				{
+					"title": "Description",
+					"name": "description",
+					"type": "string",
+					"default": ""
+				},
+				{
+					"title": "Published",
+					"name": "published",
+					"type": "datetime",
+					"default": "{{now}}",
+					"isPublishDate": true
+				},
+				{
+					"title": "Updated",
+					"name": "updated",
+					"type": "datetime"
+				},
+				{
+					"title": "Cover Image",
+					"name": "image",
+					"type": "image",
+					"isPreviewImage": true,
+					"default": ""
+				},
+				{
+					"title": "Tags",
+					"name": "tags",
+					"type": "list",
+					"default": []
+				},
+				{
+					"title": "Category",
+					"name": "category",
+					"type": "categories",
+					"default": []
+				},
+				{
+					"title": "Draft",
+					"name": "draft",
+					"type": "boolean",
+					"default": false
+				},
+				{
+					"title": "Language",
+					"name": "lang",
+					"type": "choice",
+					"choices": [
+						"",
+						"pt",
+						"en"
+					],
+					"default": ""
+				}
+			]
+		},
+		{
+			"name": "portfolio",
+			"pageBundle": true,
+			"previewPath": "portfolio",
+			"filePrefix": null,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"title": "Title",
+					"name": "title",
+					"type": "string",
+					"single": true
+				},
+				{
+					"title": "Description",
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"title": "Cover Image",
+					"name": "image",
+					"type": "image",
+					"isPreviewImage": true
+				},
+				{
+					"title": "Link",
+					"name": "url",
+					"type": "string"
+				},
+				{
+					"title": "Category",
+					"name": "category",
+					"type": "categories",
+					"default": "uncategorized"
+				},
+				{
+					"title": "Date",
+					"name": "date",
+					"type": "datetime"
+				},
+				{
+					"title": "Order",
+					"name": "order",
+					"type": "number",
+					"default": 0
+				},
+				{
+					"title": "Language",
+					"name": "lang",
+					"type": "choice",
+					"choices": [
+						"",
+						"pt",
+						"en"
+					],
+					"default": ""
+				}
+			]
+		}
+	]
 }
