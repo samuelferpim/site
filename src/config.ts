@@ -94,7 +94,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "E-mail",
 			icon: "fa6-solid:envelope",
-			url: "mailto:samuelferpim@gmail.com",
+			url: "mailto:contato@samuelferpim.com",
 		},
 	],
 };
