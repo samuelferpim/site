@@ -31,8 +31,8 @@ export const commentConfig: CommentConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-	title: "Samuel",
-	subtitle: "Just the voices in my head",
+	title: "> Samuel",
+	subtitle: "404 error, page not found",
 	lang: DEFAULT_LOCALE as SiteConfig["lang"],
 	themeColor: {
 		hue: 225,
@@ -53,7 +53,11 @@ export const siteConfig: SiteConfig = {
 		enable: true,
 		depth: 2,
 	},
-	favicon: [],
+	favicon: [
+		{
+			src: "/favicon/icon.png",
+		},
+	],
 };
 
 export const navBarConfig: NavBarConfig = {

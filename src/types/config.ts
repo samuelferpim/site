@@ -7,15 +7,8 @@ export type SiteConfig = {
 
 	lang:
 		| "en"
-		| "zh-CN"
-		| "zh-TW"
-		| "ja"
-		| "ko"
+		| "pt-BR"
 		| "es"
-		| "th"
-		| "vi"
-		| "tr"
-		| "id";
 
 	themeColor: {
 		hue: number;
