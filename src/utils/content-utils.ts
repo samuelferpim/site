@@ -91,22 +91,20 @@ export async function getPostForLang(
 	lang: string,
 ): Promise<CollectionEntry<"posts"> | undefined> {
 	const allPosts = await getRawSortedPosts();
-	return resolveLocalizedEntry(allPosts, logicalSlug, lang);
+	return allPosts.find(
+		(post) =>
+			getEntryLang(post) === lang && getEntryLogicalSlug(post) === logicalSlug,
+	);
 }
 
 export async function getSortedPostsForLang(lang: string) {
 	const allPosts = await getRawSortedPosts();
-	const logicalSlugs = Array.from(
-		new Set(allPosts.map((p) => getPostLogicalSlug(p))),
+	
+	const filteredPosts = allPosts.filter(
+		(post) => getEntryLang(post) === lang
 	);
 
-	const resolvedPosts: CollectionEntry<"posts">[] = [];
-	for (const slug of logicalSlugs) {
-		const post = await getPostForLang(slug, lang);
-		if (post) resolvedPosts.push(post);
-	}
-
-	return resolvedPosts.sort((a, b) => {
+	return filteredPosts.sort((a, b) => {
 		const dateA = new Date(a.data.published);
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;

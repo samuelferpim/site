@@ -1,12 +1,14 @@
 ---
 title: "Oat and Egg Pancakes: Your New Breakfast Best Friend"
 published: 2026-02-20
-description: "Tired of scrambled eggs and oatmeal porridge? These oat and egg pancakes fix your mornings with 27g of protein."
+updated: 2026-02-20
+description: "Tired of scrambled eggs and oatmeal porridge? These oat pancakes fix your mornings with 27g of protein."
 image: "../../images/oat-and-egg-pancakes-cover.jpg"
 tags: ["tips", "food", "recipes"]
 category: "Recipes"
 draft: false
 lang: "en"
+fmContentType: posts
 ---
 
 ## Eggs and oats every day. Every. Single. Day.

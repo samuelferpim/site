@@ -15,10 +15,10 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 
 export const commentConfig: CommentConfig = {
 	giscus: {
-		repo: "samuelferpim/site", // TODO: habilitar Discussions no seu repo
-		repoId: "", // TODO: pegar em https://giscus.app
+		repo: "samuelferpim/site",
+		repoId: "R_kgDORVBDug",
 		category: "General",
-		categoryId: "", // TODO: pegar em https://giscus.app
+		categoryId: "DIC_kwDORVBDus4C2457",
 		mapping: "pathname",
 		strict: "0",
 		reactionsEnabled: "1",
