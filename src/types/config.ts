@@ -31,12 +31,17 @@ export type SiteConfig = {
 	};
 
 	favicon: Favicon[];
+
+	analytics?: {
+		googleAnalyticsId?: string;
+	};
 };
 
 export type Favicon = {
 	src: string;
 	theme?: "light" | "dark";
 	sizes?: string;
+	rel?: "icon" | "apple-touch-icon";
 };
 
 export enum LinkPreset {
