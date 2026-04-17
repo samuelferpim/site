@@ -1,3 +1,3 @@
-# About
+# Perfil
 
-I'm Samuel, a developer at CI&T. I like potatoes.
+Sou o Samuel, desenvolvedor na CI&T.

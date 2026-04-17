@@ -32,7 +32,7 @@ export const commentConfig: CommentConfig = {
 
 export const siteConfig: SiteConfig = {
 	title: "> Samuel",
-	subtitle: "404 error, page not found",
+	subtitle: "Engineering & training notes",
 	lang: DEFAULT_LOCALE as SiteConfig["lang"],
 	themeColor: {
 		hue: 225,
@@ -40,7 +40,7 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "assets/images/banner.png",
+		src: "assets/images/banner.jpg",
 		position: "center",
 		quality: "mid",
 		credit: {
@@ -55,9 +55,21 @@ export const siteConfig: SiteConfig = {
 	},
 	favicon: [
 		{
+			src: "/favicon/icon-32.png",
+			sizes: "32x32",
+		},
+		{
 			src: "/favicon/icon.png",
+			sizes: "512x512",
+		},
+		{
+			src: "/favicon/apple-touch-icon.png",
+			sizes: "180x180",
 		},
 	],
+	analytics: {
+		googleAnalyticsId: "G-RSF8PP83X3",
+	},
 };
 
 export const navBarConfig: NavBarConfig = {
@@ -78,7 +90,7 @@ export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.jpg",
 	avatarQuality: "high",
 	name: "Samuel",
-	bio: "???",
+	bio: "Developer",
 	links: [
 		{
 			name: "Instagram",

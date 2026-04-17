@@ -23,7 +23,7 @@ import {
 import { defaultFavicons } from "../constants/icon";
 import { getKeyToLanguage, SUPPORTED_LOCALES } from "../i18n/translation";
 import type { Favicon } from "../types/config";
-import { pathsEqual, url } from "../utils/url-utils";
+import { url } from "../utils/url-utils";
 import "katex/dist/katex.css";
 
 interface Props {
@@ -39,7 +39,6 @@ interface Props {
 
 let {
 	title,
-	banner,
 	description,
 	lang,
 	fontLang,
@@ -61,12 +60,6 @@ const isHomePage =
 // defines global css variables
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
 const configHue = siteConfig.themeColor.hue;
-if (!banner || typeof banner !== "string" || banner.trim() === "") {
-	banner = siteConfig.banner.src;
-}
-
-// TODO don't use post cover as banner for now
-banner = siteConfig.banner.src;
 
 const enableBanner = siteConfig.banner.enable;
 
@@ -141,7 +134,7 @@ const resolveOgImageUrl = async (src?: string) => {
 		);
 		return undefined;
 	}
-	const img = await file();
+	const img = (await file()) as { src: string };
 	return toAbsoluteUrl(img.src);
 };
 
@@ -166,14 +159,18 @@ const bannerOffset =
 		<meta charset="UTF-8" />
 
 		<title>{pageTitle}</title>
-		
-		<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-RSF8PP83X3"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RSF8PP83X3');
-    </script>
+
+		{siteConfig.analytics?.googleAnalyticsId && (
+			<>
+				<script is:inline type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analytics.googleAnalyticsId}`}></script>
+				<script is:inline type="text/partytown" define:vars={{ gaId: siteConfig.analytics.googleAnalyticsId }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', gaId);
+				</script>
+			</>
+		)}
 		<SpeedInsights />
 		<Analytics />
 
@@ -239,7 +236,6 @@ const bannerOffset =
 		{alternateLinks && alternateLinks.map((link: { lang: string; href: string }) => (
 			<link rel="alternate" hreflang={getKeyToLanguage(link.lang)} href={link.href} />
 		))}
-		<meta name="description" content={description || pageTitle}>
 		<meta name="author" content={profileConfig.name}>
 
 		<meta property="og:site_name" content={siteConfig.title}>
@@ -262,7 +258,7 @@ const bannerOffset =
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		{favicons.map(favicon => (
-			<link rel="icon"
+			<link rel={favicon.rel ?? (favicon.sizes === "180x180" ? "apple-touch-icon" : "icon")}
 				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
 				  sizes={favicon.sizes}
 				  media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
@@ -364,7 +360,6 @@ import {
 } from 'overlayscrollbars';
 import { isDateInFuture } from "../utils/date-utils";
 import {getHue, getStoredTheme, setHue, setTheme} from "../utils/setting-utils";
-import {pathsEqual, url} from "../utils/url-utils";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_HOME,
@@ -521,6 +516,7 @@ function applyScheduledPostVisibility() {
 
 	const now = Date.now();
 	scheduledPosts.forEach((post) => {
+		if (!(post instanceof HTMLElement)) return;
 		const published = post.dataset.postPublished;
 		if (!published) return;
 

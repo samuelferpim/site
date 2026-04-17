@@ -1,10 +1,12 @@
 import rss from "@astrojs/rss";
-import { getSortedPosts } from "@utils/content-utils";
+import { getSortedPostsForLang } from "@utils/content-utils";
+import { getPostLogicalSlug } from "@utils/content-utils";
 import { getPostUrlBySlug } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
 import { siteConfig } from "@/config";
+import { DEFAULT_LOCALE, getKeyToLanguage } from "@/i18n/translation";
 import { getEffectiveDate } from "@utils/date-utils";
 
 const parser = new MarkdownIt();
@@ -18,7 +20,7 @@ function stripInvalidXmlChars(str: string): string {
 }
 
 export async function GET(context: APIContext) {
-	const blog = await getSortedPosts();
+	const blog = await getSortedPostsForLang(DEFAULT_LOCALE);
 
 	return rss({
 		title: siteConfig.title,
@@ -33,12 +35,12 @@ export async function GET(context: APIContext) {
 				title: post.data.title,
 				pubDate,
 				description: post.data.description || "",
-				link: getPostUrlBySlug(post.slug),
+				link: getPostUrlBySlug(getPostLogicalSlug(post), DEFAULT_LOCALE),
 				content: sanitizeHtml(parser.render(cleanedContent), {
 					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 				}),
 			};
 		}),
-		customData: `<language>${siteConfig.lang}</language>`,
+		customData: `<language>${getKeyToLanguage(DEFAULT_LOCALE)}</language>`,
 	});
 }

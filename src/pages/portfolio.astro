@@ -1,10 +1,5 @@
 ---
-import {
-	type CollectionEntry,
-	getCollection,
-	getEntry,
-	render,
-} from "astro:content";
+import { getEntry, render } from "astro:content";
 import path from "node:path";
 import Markdown from "@components/misc/Markdown.astro";
 import PortfolioCard from "@components/PortfolioCard.astro";
@@ -15,7 +10,7 @@ import {
 } from "@utils/content-utils";
 import { getPostUrlBySlug, getStaticAlternates } from "@utils/url-utils";
 import I18nKey from "../i18n/i18nKey";
-import { DEFAULT_LOCALE, i18n, SUPPORTED_LOCALES } from "../i18n/translation";
+import { DEFAULT_LOCALE, i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 // Get the static entry for the header/intro

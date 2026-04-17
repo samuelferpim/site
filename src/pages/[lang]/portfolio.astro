@@ -1,9 +1,10 @@
 ---
-import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import { getEntry } from "astro:content";
 import path from "node:path";
 import Markdown from "@components/misc/Markdown.astro";
 import PortfolioCard from "@components/PortfolioCard.astro";
 import {
+	getEntryLang,
 	getPostByUrl,
 	getPostLogicalSlug,
 	getPortfolioLang,
@@ -39,7 +40,7 @@ if (!portfolioSpec) {
 const { Content } = portfolioSpec
 	? await portfolioSpec.render()
 	: { Content: null };
-const portfolioSpecLang = portfolioSpec ? getPortfolioLang(portfolioSpec) : lang;
+const portfolioSpecLang = portfolioSpec ? getEntryLang(portfolioSpec) : lang;
 
 const toPlainText = (value: string) =>
 	value

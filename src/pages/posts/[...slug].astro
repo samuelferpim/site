@@ -17,7 +17,7 @@ import {
 } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug, url } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
-import { licenseConfig } from "src/config";
+import { licenseConfig } from "@/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
@@ -84,7 +84,7 @@ const resolvePostImageUrl = async (src?: string) => {
 		);
 		return undefined;
 	}
-	const img = await file();
+	const img = (await file()) as { src: string };
 	return new URL(img.src, Astro.site).href;
 };
 

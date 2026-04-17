@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Try to get localized about page, fallback to default 'about'
-let aboutPost = await getEntry("spec", `about-${lang}` as any);
+let aboutPost = await getEntry("spec", `${lang?.toLowerCase()}/about` as any);
 if (!aboutPost) {
 	aboutPost = await getEntry("spec", "about");
 }
