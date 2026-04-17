@@ -257,6 +257,7 @@ const bannerOffset =
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="shortcut icon" href={url("/favicon.ico")} type="image/x-icon" />
 		{favicons.map(favicon => (
 			<link rel={favicon.rel ?? (favicon.sizes === "180x180" ? "apple-touch-icon" : "icon")}
 				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
