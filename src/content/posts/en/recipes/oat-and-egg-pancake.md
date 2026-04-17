@@ -8,7 +8,6 @@ tags: ["tips", "food", "recipes"]
 category: "Recipes"
 draft: false
 lang: "en"
-fmContentType: posts
 ---
 
 ## Eggs and oats every day. Every. Single. Day.

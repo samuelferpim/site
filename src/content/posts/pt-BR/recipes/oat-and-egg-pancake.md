@@ -8,7 +8,6 @@ tags: ["dicas", "alimentação", "receitas"]
 category: "Receitas"
 draft: false
 lang: "pt-BR"
-fmContentType: posts
 ---
 
 ## Ovo e aveia todo dia. Todo. Santo. Dia.
